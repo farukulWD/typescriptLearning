@@ -1,37 +1,45 @@
 {
-  // access modifiers
-  class BankAccount {
-    public readonly id: number;
-    public name: string;
-    protected _balance: number;
+  // oop - inheritence
+  class Person {
+    name: string;
+    age: number;
+    address: string;
 
-    constructor(id: number, name: string, balance: number) {
-      this.id = id;
+    constructor(name: string, age: number, address: string) {
       this.name = name;
-      this._balance = balance;
+      this.age = age;
+      this.address = address;
     }
-
-    public addDeposit(amount: number) {
-      this._balance = this._balance + amount;
-    }
-
-    private getBalance() {
-      return this._balance;
-    }
-
-    getHiddenMethod() {
-      return this.getBalance();
+    getSleep(numOfHours: number) {
+      console.log(`${this.name} will sleep for ${numOfHours}`);
     }
   }
 
-  class StudentAccount extends BankAccount {
-    test() {}
+  class Student extends Person {
+    constructor(name: string, age: number, address: string) {
+      super(name, age, address);
+    }
   }
 
-  const goribManusherAccount = new BankAccount(111, "Mr. gorib", 20);
+  const student1 = new Student("Mr. student", 20, "Uganda");
 
-  goribManusherAccount.addDeposit(20);
-  //   const myBalance = goribManusherAccount.getBalance(120);
+  class Teacher extends Person {
+    designation: string;
 
-  //
+    constructor(
+      name: string,
+      age: number,
+      address: string,
+      designation: string
+    ) {
+      super(name, age, address);
+      this.designation = designation;
+    }
+
+    takeClass(numOfClass: number) {
+      console.log(`${this.name} will take ${numOfClass}`);
+    }
+  }
+
+  const teacher = new Teacher("Mr. teacher", 40, "Uganda", "professor");
 }
